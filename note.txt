@@ -1,3 +1,0 @@
-packages
-className function -> object
-react-icons
