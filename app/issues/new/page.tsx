@@ -15,13 +15,13 @@ import { AiFillInfoCircle } from 'react-icons/ai';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createIssueSchema } from '@/app/validationSchema';
 import { z } from 'zod';
-import { ClientPageRoot } from 'next/dist/client/components/client-page';
+import ErrorMessage from '@/app/components/ErrorMessage';
 
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
 const newIssue = () => {
-    const {register, handleSubmit, control, formState : {errors}} = useForm<IssueForm>({
+    const {register, handleSubmit, control, formState:{errors}} = useForm<IssueForm>({
         resolver: zodResolver(createIssueSchema)
     });
     const router = useRouter();
@@ -47,13 +47,13 @@ const newIssue = () => {
     })}>
         <TextField.Root placeholder='Title' {...register('title')}>
         </TextField.Root>
-        { errors.title && <Text as='p' color='red'>{errors.title.message}</Text>}
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller 
         name='description'
         control = {control}
         render = {({ field })=> <SimpleMDE placeholder='Description' {...field}/>}
         />
-        {errors.description && <Text as='p' color='red'>{errors.description.message}</Text>}
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
         
         <Button>Submit New Issue</Button>
     </form>
