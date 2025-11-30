@@ -9,7 +9,7 @@ import IssueActions from "./IssueAction";
 
 const IssuePage = async () => {
     const issues = await prisma.issues.findMany();
-    await delay(2000);
+    await delay(1000);
     return (
         <div>
             <IssueActions/>
@@ -25,7 +25,9 @@ const IssuePage = async () => {
                         {issues.map(issue => (
                             <Table.Row key={issue.id}>
                                 <Table.Cell>
+                                    <Link href={`/issues/${issue.id}`}>
                                     {issue.title}
+                                    </Link>
                                 <div className="block md:hidden"><IssueStatusBadge status={issue.status} /></div>
                                 </Table.Cell>
                                 <Table.Cell className="hidden md:table-cell"><IssueStatusBadge status={issue.status} /></Table.Cell>
