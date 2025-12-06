@@ -1,19 +1,14 @@
 import { prisma } from "@/prisma/client";
+import { Box, Grid } from '@radix-ui/themes';
 import { notFound } from "next/navigation";
-import { Box, Button, Card, Grid, Heading, Text } from '@radix-ui/themes';
-import { IssueStatusBadge } from "@/app/components";
-import ReactMarkdown from 'react-markdown';
-import delay from 'delay';
-import Link from "next/link";
-import { Pencil2Icon } from "@radix-ui/react-icons";
 import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
 
 interface Props {
-    params: {id: string}
+    params: { id: string }
 }
 
-const IssuePageDetail = async ({params} : Props) => {
+const IssuePageDetail = async ({ params } : Props) => {
     const { id } = await params;
     const issue = await prisma.issues.findUnique({
         where: {id: parseInt(id)}
