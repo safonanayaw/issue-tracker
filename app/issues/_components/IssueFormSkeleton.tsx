@@ -1,11 +1,8 @@
-
-// export {default as IssueFormSkeleton} from '../../_components/IssueFormSkeleton';
-
 import { Box } from '@radix-ui/themes';
 import React from 'react';
 import { Skeleton } from '@/app/components';
 
-const loading = () => {
+const IssueFormSkeleton = () => {
   return (
     <Box className="max-w-xl">
       <Skeleton height="2rem" />
@@ -14,4 +11,4 @@ const loading = () => {
   );
 };
 
-export default loading;
+export default IssueFormSkeleton;

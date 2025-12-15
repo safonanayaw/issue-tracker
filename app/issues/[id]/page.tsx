@@ -1,3 +1,4 @@
+
 import { prisma } from "@/prisma/client";
 import { Box, Grid } from '@radix-ui/themes';
 import { notFound } from "next/navigation";
@@ -10,6 +11,7 @@ interface Props {
 
 const IssuePageDetail = async ({ params } : Props) => {
     const { id } = await params;
+    console.log(params);
     const issue = await prisma.issues.findUnique({
         where: {id: parseInt(id)}
     });
