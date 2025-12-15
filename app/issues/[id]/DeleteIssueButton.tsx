@@ -1,9 +1,29 @@
-import { Button } from "@radix-ui/themes"
+import { AlertDialog, Button, Flex } from "@radix-ui/themes"
 
 
 const DeleteIssueButton = ({ issueId } : {issueId: number}) => {
     return (
-        <Button color="red">Delete Issue</Button>
+        <>
+        <AlertDialog.Root>
+        <AlertDialog.Trigger>
+            <Button color="red">Delete Issue</Button>
+        </AlertDialog.Trigger>
+        <AlertDialog.Content>
+            <AlertDialog.Title>Delete Issue</AlertDialog.Title>
+            <AlertDialog.Description>Are you sure you want to delete this issue</AlertDialog.Description>
+        <Flex direction="row" gap="3">
+            <AlertDialog.Cancel>
+                <Button color="gray" variant="soft">Cancel</Button>
+            </AlertDialog.Cancel>
+
+            <AlertDialog.Action>
+                <Button color="red" variant="solid">Confirm Delete</Button>
+            </AlertDialog.Action>
+        </Flex>
+        </AlertDialog.Content>
+
+        </AlertDialog.Root>
+        </>
     )
 }
 
