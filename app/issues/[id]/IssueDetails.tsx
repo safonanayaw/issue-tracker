@@ -4,7 +4,7 @@ import { Heading, Card, Text } from "@radix-ui/themes"
 import ReactMarkdown from "react-markdown"
 
 
-const IssuePageDetail = ({ issue } : { issue : Issues}) => {
+const IssueDetails = ({ issue } : { issue : Issues}) => {
     return (
         <>
                 <Heading>{issue.title}</Heading>
@@ -20,4 +20,4 @@ const IssuePageDetail = ({ issue } : { issue : Issues}) => {
     )
 }
 
-export default IssuePageDetail;
+export default IssueDetails;
