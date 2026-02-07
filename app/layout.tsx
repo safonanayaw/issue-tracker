@@ -7,7 +7,7 @@ import { Container, Theme, ThemePanel } from '@radix-ui/themes';
 
 
 import NavBar from './NavBar'
-import AuthProvider from "./api/auth/AuthProvider";
+import AuthProvider from "./auth/AuthProvider";
 
 const inter = Inter({ subsets: ['latin'],
   variable: "--font-inter",
