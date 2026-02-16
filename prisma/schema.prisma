@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Issues {
@@ -17,6 +18,8 @@ model Issues {
   status      Status   @default(OPEN)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  assignedToUserId String? @db.VarChar(255)
+  assignToUser User? @relation(fields: [assignedToUserId], references: [id])
 }
 
 enum Status {
@@ -63,6 +66,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  assignedIssues Issues[]
  
   @@map("users")
 }
@@ -73,5 +77,5 @@ model VerificationToken {
   expires    DateTime
  
   @@unique([identifier, token])
-  @@map("verification_tokens")
+  @@map("verif ication_tokens")
 }

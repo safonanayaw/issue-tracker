@@ -5,7 +5,6 @@ import EditIssueWrapper from "./EditIssueWrapper";
 
 
 const EditIssuePage = async ({ params } : { params : {id : string }}) => {
-    console.log("PARAMS:", params);
     const { id } = await params;
     const issue = await prisma.issues.findUnique({
         where : {id : parseInt(id)}
